@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{peldetajs.vards}} - MiniVeikals{% endblock %}
+{% block content %}
+<div class = "peldetaji-show">
+    <img src ="{{ url_for('static', filename='images/swimmers/' ~ peldetajs['bilde']) }}"
+    alt ="{{ peldetajs['name'] }}">
+    <div>
+    <h2>{{peldetajs["vards"]}}</h2>
+    <p>Disciplīna: {{peldetajs["disciplina"]}} €</p>
+    <p>Distance: {{peldetajs["distance"]}}</p>
+</div>
+</div>
+
+{% endblock %}
