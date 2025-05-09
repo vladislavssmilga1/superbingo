@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block title %} Produkti {% endblock %}
+{% block title %} Peldētāji {% endblock %}
 {% block content %}
-<h2>Produkti</h2>
+<h2>Peldētāji</h2>
 <div class="peldetaji-list">
     {% for peldetaji in peldetaji %}
     <a class="peldetajs" href="{{ url_for('peldetaji_info', peldetajs_id=peldetaji['id']) }}">
