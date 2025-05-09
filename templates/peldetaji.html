@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} Produkti {% endblock %}
+{% block content %}
+<h2>Produkti</h2>
+<div class="peldetaji-list">
+    {% for peldetaji in peldetaji %}
+    <a class="products-item" href="{{ url_for('peldetaji_info', peldetajs_id=peldetaji['id']) }}">
+        <img src="{{ url_for('static', filename='images/swimmers/' ~ peldetaji.bilde) }}" alt="{{ peldetajs.vards }}">
+        <div class="product-name">{{ peldetaji.vards }}</div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}
