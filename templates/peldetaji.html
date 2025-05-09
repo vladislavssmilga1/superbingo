@@ -3,10 +3,10 @@
 {% block content %}
 <h2>Peldētāji</h2>
 <div class="peldetaji-list">
-    {% for peldetaji in peldetaji %}
-    <a class="peldetajs" href="{{ url_for('peldetaji_info', peldetajs_id=peldetaji['id']) }}">
-        <img src="{{ url_for('static', filename='images/swimmers/' ~ peldetaji.bilde) }}" alt="{{ peldetajs.vards }}">
-        <div class="product-name">{{ peldetaji.vards }}</div>
+    {% for peldetajs in peldetajs %}
+    <a class="peldetajs" href="{{ url_for('peldetaji_show', peldetajs_id=peldetajs['id']) }}">
+        <img src="{{ url_for('static', filename='images/swimmers/' ~ peldetajs.bilde) }}" alt="{{ peldetajs.vards }}">
+        <div class="product-name">{{ peldetajs.vards }}</div>
     </a>
     {% endfor %}
 </div>

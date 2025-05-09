@@ -21,24 +21,26 @@ def home():
 @app.route("/peldetaji")
 def products():
     conn = get_db_connection()
-    products = conn.execute("SELECT * FROM peldetaji").fetchall()
+    peldetajs = conn.execute("SELECT * FROM peldetaji").fetchall()
     conn.close()
-    return render_template("peldetaji.html", products=products)
+    return render_template("peldetaji.html", peldetajs=peldetajs)
 
 
 @app .route ("/ <int:peldetajs_id>")
-def peldetaji_show(product_id):
+def peldetaji_show(peldetajs_id):
     conn = get_db_connection ()
     peldetajs = conn.execute(
         """
-        SELECT "products".*, "producers"."name" AS "producer"
-        FROM products
-        LEFT JOIN "producers" ON "products"."producer_id" = "producers"."id"
-        WHERE "products"."id" = ?
+        SELECT "peldetaji".*, "disciplinas"."vards" AS "disciplina", "distances"."metri" AS "distance", "regioni"."vards" AS "valsts"
+        FROM peldetaji
+        LEFT JOIN "disciplinas" ON "peldetaji"."disciplina_id" = "disciplinas"."id"
+        LEFT JOIN "distances" ON "peldetaji"."distance_id" = "distances"."id"
+        LEFT JOIN "regioni" ON "peldetaji"."regions_id" = "regioni"."id"
+        WHERE "peldetaji"."id" = ?
         """,
-        (product_id,),
+        (peldetajs_id,),
     ).fetchone()
-    conn. close () # Aizver savienojumu ar datubāzi
+    conn. close ()
     return render_template ("peldetaji_info.html", peldetajs=peldetajs)
 
 
